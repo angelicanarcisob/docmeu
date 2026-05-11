@@ -28,29 +28,28 @@ body{
 }
 
 .video-box{
-  position: relative;
-  width: 50%;
-  height: 50vh;
+  position:relative;
+  width:100%;
+  height:100vh;
+  overflow:hidden;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  overflow:hidden;
   background:black;
 }
 
 /* VIDEO TOTALMENTE CENTRALIZADO */
 #videoIntro{
   position:absolute;
-
-  width: 50%;
-  height: 50%;
-
-  object-fit:contain;
-
   top:0;
   left:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:contain;
 
   z-index:1;
 }
@@ -59,9 +58,15 @@ body{
 /* BOTÃO PLAY CENTRALIZADO */
 
 #btnPlay{
-  background-image: url(botao-play.png);
+  position:absolute;
+  z-index:999;
 
-background-size: cover;
+  width:120px;
+  height:120px;
+
+  cursor:pointer;
+
+  transition:0.3s;
 }
 
 #btnPlay:hover{
