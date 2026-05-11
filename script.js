@@ -1,19 +1,21 @@
 const video = document.getElementById("videoIntro");
 const intro = document.getElementById("intro");
 const convite = document.getElementById("convite");
-const btnPlay = document.getElementById("btnPlay");
+
 
 convite.style.display = "none";
 
-/* VIDEO */
+/* tenta ativar som quando tocar na tela */
 
-btnPlay.addEventListener("click", () => {
+document.addEventListener("click", () => {
+
+  video.muted = false;
 
   video.play();
+   }, { once:true });
 
-  btnPlay.style.display = "none";
 
-});
+/* terminou o vídeo */
 
 video.addEventListener("ended", () => {
 
