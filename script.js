@@ -95,7 +95,6 @@ function confirmar() {
 
   }
 
-  document.getElementById("mensagem").style.display = "block";
 
   alert("Presença confirmada com sucesso! 🎉");
 

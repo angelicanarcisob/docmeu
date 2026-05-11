@@ -14,66 +14,59 @@ body{
 }
 
 /* VIDEO */
-/* VIDEO */
-
-#intro{
-  position:fixed;
-  inset:0;
-  background:black;
-  z-index:9999;
-  overflow:hidden;
+#intro {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 9999;
+  width: 100%;
+  height: 100dvh; /* Usa a altura dinâmica para mobile */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.video-box{
-  position:relative;
-  width:100vw;
-  height:100vh;
+.video-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* VIDEO AJUSTADO */
-
-#videoIntro{
-  position:absolute;
-  top:0;
-  left:0;
-
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-
-  background:black;
+/* VIDEO AJUSTADO PARA COBRIR A TELA */
+#videoIntro {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover; /* Garante que preencha sem sobrar bordas pretas */
+  background: black;
 }
 
 /* BOTÃO CENTRALIZADO */
-
-#btnPlay{
-  position:absolute;
-
-  top:50%;
-  left:50%;
-
-  transform:translate(-50%, -50%);
-
-  padding:16px 30px;
-
-  background:#ff1493;
-  color:white;
-
-  border:none;
-  border-radius:18px;
-
-  font-size:20px;
-  font-weight:bold;
-
-  cursor:pointer;
-
-  z-index:1000;
-
-  width:auto;
+#btnPlay {
+  position: relative; /* Mudado para relative para respeitar o flex do pai */
+  z-index: 1000;
+  padding: 16px 30px;
+  background: #ff1493;
+  color: white;
+  border: none;
+  border-radius: 50px; /* Mais arredondado fica moderno */
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  transition: transform 0.2s;
 }
 
-
+#btnPlay:active {
+  transform: scale(0.95);
+}
 
 /* CONVITE */
 
