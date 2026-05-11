@@ -148,7 +148,7 @@ button{
 @media (max-width:768px){
 
   #videoIntro{
-    object-fit:cover;
+    object-fit:contain;
   }
 
   #btnPlay{
