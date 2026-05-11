@@ -50,26 +50,44 @@ body{
   z-index: 1;
 }
 
-/* BOTÃO SEMPRE À FRENTE E AO CENTRO */
-#btnPlay {
-  position: relative; 
-  z-index: 10; /* Garante que o botão fique acima do vídeo */
-  padding: 18px 35px;
-  background: #ff1493;
-  color: white;
-  border: none;
-  border-radius: 50px;
-  font-size: 22px;
-  font-weight: bold;
+/* BOTÃO PLAY CENTRALIZADO */
+
+#btnPlay{
+  position: relative;
+  z-index: 10;
+
+  width: 120px;
+  height: 120px;
+
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-  transition: all 0.3s ease;
+
+  transition: transform 0.3s ease;
+
+  animation: pulse 1.5s infinite;
 }
 
-#btnPlay:hover {
+#btnPlay:hover{
   transform: scale(1.1);
-  background: #ff69b4;
 }
+
+/* ANIMAÇÃO */
+
+@keyframes pulse{
+
+  0%{
+    transform: scale(1);
+  }
+
+  50%{
+    transform: scale(1.08);
+  }
+
+  100%{
+    transform: scale(1);
+  }
+
+}
+
 /* CONVITE */
 
 .card{
@@ -152,8 +170,8 @@ button{
   }
 
   #btnPlay{
-    font-size:18px;
-    padding:14px 24px;
+    width:80px;
+    height:80px;
   }
 
 }
