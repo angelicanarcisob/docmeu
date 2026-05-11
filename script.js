@@ -1,28 +1,28 @@
 const video = document.getElementById("videoIntro");
 const intro = document.getElementById("intro");
 const convite = document.getElementById("convite");
+const overlayInicio = document.getElementById("overlay-inicio");
+const btnIniciar = document.getElementById("btnIniciar");
 
 
 convite.style.display = "none";
 
-/* tenta ativar som quando tocar na tela */
-
-document.addEventListener("click", () => {
-
+// Quando clicar no botão de iniciar
+btnIniciar.addEventListener("click", () => {
+  // Esconde a tela do botão
+  overlayInicio.style.display = "none";
+  
+  // Toca o vídeo com som
   video.muted = false;
+  video.play().catch(error => {
+      console.log("Erro ao dar play:", error);
+  });
+});
 
-  video.play();
-   }, { once:true });
-
-
-/* terminou o vídeo */
-
+/* Terminou o vídeo */
 video.addEventListener("ended", () => {
-
   intro.style.display = "none";
-
   convite.style.display = "block";
-
 });
 
 /* CAMPOS DINÂMICOS */

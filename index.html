@@ -12,23 +12,25 @@
 <body>
 
 <!-- TELA DO VÍDEO -->
-<div id="intro">
-
-  <div class="video-box">
-
-    <video 
-  id="videoIntro"
-  autoplay
-  muted
-  playsinline
-  preload="auto"
->
-  <source src="Convite da Wendy.mp4" type="video/mp4">
-</video>
-
-  </div>
-
+ <div id="overlay-inicio" style="position: fixed; inset: 0; background: #ff69b4; z-index: 10000; display: flex; align-items: center; justify-content: center; flex-direction: column; color: white;">
+    <h2 style="margin-bottom: 20px;">Convite da Wendy</h2>
+    <button id="btnIniciar" style="padding: 15px 30px; font-size: 20px; border-radius: 50px; border: none; background: white; color: #ff1493; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        Abrir Convite ✉️
+    </button>
 </div>
+
+<div id="intro">
+  <div class="video-box">
+    <video 
+      id="videoIntro"
+      playsinline
+      preload="auto"
+    >
+      <source src="Convite da Wendy.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+
 
   <!-- CONVITE -->
   <div class="card" id="convite">
