@@ -1,63 +1,402 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html class="h-full">
 <head>
-  <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Convite Wendy</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="style.css">
+  <title>Aniversário da Wendy</title>
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+<body class="h-full">
+  <div
+    id="app"
+    class="w-full h-full overflow-auto relative"
+    style="
+      background: linear-gradient(
+        135deg,
+        #5b21b6 0%,
+        #6d28d9 25%,
+        #7c3aed 50%,
+        #8b5cf6 75%,
+        #a78bfa 100%
+      );
+      background-attachment: fixed;
+    "
+  >
+    <!-- BACKGROUND -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div
+        class="absolute inset-0 opacity-50"
+        style="
+          background:
+            radial-gradient(ellipse at 20% 50%, #a78bfa 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 50%, #8b5cf6 0%, transparent 50%);
+          filter: blur(80px);
+        "
+      ></div>
 
-<!-- TELA DO VÍDEO -->
- <div id="overlay-inicio" style="position: fixed; inset: 0; background: #ff69b4; z-index: 10000; display: flex; align-items: center; justify-content: center; flex-direction: column; color: white;">
-    <h2 style="margin-bottom: 20px;">Convite da Wendy</h2>
-    <button id="btnIniciar" style="padding: 15px 30px; font-size: 20px; border-radius: 50px; border: none; background: white; color: #ff1493; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-        Abrir Convite ✉️
-    </button>
-</div>
+      <div
+        class="absolute top-20 left-10 w-32 h-32 rounded-full opacity-40"
+        style="
+          background: radial-gradient(circle, #c4b5fd 0%, transparent 70%);
+          filter: blur(40px);
+          animation: float-orbit 8s ease-in-out infinite;
+        "
+      ></div>
 
-<div id="intro">
-  <div class="video-box">
-    <video 
-      id="videoIntro"
-      playsinline
-      preload="auto"
-    >
-      <source src="Convite da Wendy.mp4" type="video/mp4">
-    </video>
-  </div>
-</div>
+      <div
+        class="absolute top-1/4 right-5 w-40 h-40 rounded-full opacity-35"
+        style="
+          background: radial-gradient(circle, #a78bfa 0%, transparent 70%);
+          filter: blur(50px);
+          animation: float-orbit 10s ease-in-out infinite 2s;
+        "
+      ></div>
 
+      <div
+        class="absolute bottom-1/3 left-1/4 w-36 h-36 rounded-full opacity-30"
+        style="
+          background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
+          filter: blur(45px);
+          animation: float-orbit 12s ease-in-out infinite 4s;
+        "
+      ></div>
+    </div>
 
-  <!-- CONVITE -->
-  <div class="card" id="convite">
+    <div class="relative z-10">
 
-    <h1>Festa da Wendy 🎉</h1>
+      <!-- MENU -->
+      <div
+        class="sticky top-0 z-50 bg-gradient-to-r from-purple-400/30 to-purple-300/30 backdrop-blur-2xl border-b-2 border-purple-300/50"
+      >
+        <div class="max-w-lg mx-auto px-4 flex gap-2 py-3">
+          <button
+            id="convite-tab"
+            class="flex-1 py-2 px-4 rounded-xl font-semibold text-sm transition-all bg-gradient-to-r from-purple-300 to-purple-200 text-purple-900 shadow-lg border border-purple-200"
+          >
+            💌 Convite
+          </button>
 
-    <p>
-      Você está convidado para comemorar os 6 aninhos da Wendy!<br><br>
-      📅 16 de Agosto<br>
-      ⏰ 15h<br>
-      📍 KidPlay Park
-    </p>
-<!-- ADICIONE ISSO NO LUGAR DOS INPUTS ANTIGOS -->
+          <button
+            id="admin-tab"
+            class="flex-1 py-2 px-4 rounded-xl font-semibold text-sm transition-all bg-white/20 backdrop-blur-md text-white hover:bg-white/30 border border-white/40"
+          >
+            📊 Administrar
+          </button>
+        </div>
+      </div>
 
-<input type="number" id="quantidade" placeholder="Quantidade total de convidados">
+      <!-- CONVITE -->
+      <div id="convite-content" class="max-w-lg mx-auto px-4 py-8">
 
-<div id="camposDinamicos"></div>
+        <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border-4 border-purple-200/80">
 
-<button id="btnConfirmar">
-  Confirmar Presença
-</button>
+          <!-- HEADER -->
+          <div
+            class="text-center pt-8 pb-4 px-6"
+            style="background: linear-gradient(to bottom, #e9d5ff, #f3e8ff)"
+          >
+            <div class="text-5xl mb-3 float-anim">🎂</div>
 
-</div>
+            <h1 id="title" class="text-4xl mb-1 font-black text-purple-700">
+              Aniversário da Wendy
+            </h1>
 
+            <div class="flex items-center justify-center gap-2 mt-3">
+              <span class="text-purple-400">🌸</span>
+
+              <p class="text-purple-500 font-semibold text-lg">
+                Estou fazendo
+                <span class="text-2xl font-bold text-purple-600">
+                  6 aninhos!
+                </span>
+              </p>
+
+              <span class="text-purple-400">🌸</span>
+            </div>
+
+            <a
+              href="https://youtube.com/shorts/6djS8HDvTF4?feature=share"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 inline-flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-purple-600 to-purple-800 text-white font-bold rounded-xl shadow-lg hover:shadow-purple-500/50 hover:from-purple-700 hover:to-purple-900 transition-all"
+            >
+              <span class="text-xl">🎥</span>
+              Assistir Convite em Vídeo
+            </a>
+          </div>
+
+          <!-- INFO -->
+          <div class="px-6 py-5 space-y-3">
+
+            <div class="flex items-center gap-3 bg-purple-50 rounded-xl p-3 border border-purple-200">
+              <span class="text-xl">📅</span>
+
+              <div>
+                <p class="text-xs text-purple-400 font-medium uppercase">Data</p>
+                <p id="date-text" class="text-purple-700 font-semibold">
+                  Sábado, 16 de Agosto
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3 bg-purple-50 rounded-xl p-3 border border-purple-200">
+              <span class="text-xl">🕐</span>
+
+              <div>
+                <p class="text-xs text-purple-400 font-medium uppercase">
+                  Horário
+                </p>
+
+                <p id="time-text" class="text-purple-700 font-semibold">
+                  15h às 19h
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="https://maps.app.goo.gl/5c8qn679sB5erQNp7"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-3 bg-purple-50 rounded-xl p-3 hover:bg-purple-100 transition-colors border border-purple-200"
+            >
+              <span class="text-xl">📍</span>
+
+              <div>
+                <p class="text-xs text-purple-400 font-medium uppercase">
+                  Local
+                </p>
+
+                <p id="location-text" class="text-purple-700 font-semibold">
+                  Rua Goiás 2680
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <!-- CONTEÚDO DOS FORMULÁRIOS -->
+          <div class="px-6 pb-8 pt-2">
+
+            <!-- ETAPA 1 -->
+            <div
+              id="step-one"
+              class="bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl p-5 border-2 border-purple-200"
+            >
+              <h2 class="text-center text-purple-600 font-bold text-lg mb-4">
+                💌 Confirme sua Presença
+              </h2>
+
+              <div class="flex gap-3">
+                <button
+                  id="btn-sim"
+                  type="button"
+                  class="flex-1 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold rounded-xl"
+                >
+                  ✅ Sim, vou!
+                </button>
+
+                <button
+                  id="btn-nao"
+                  type="button"
+                  class="flex-1 py-3 bg-gradient-to-r from-red-500 to-rose-500 text-white font-bold rounded-xl"
+                >
+                  ❌ Não vou
+                </button>
+              </div>
+            </div>
+
+            <!-- FORM SIM -->
+            <form
+              id="rsvp-form-sim"
+              class="hidden bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-5 border-2 border-green-200 space-y-4"
+            >
+              <h2 class="text-center text-green-600 font-bold text-lg mb-4">
+                ✅ Que legal! Preencha os dados
+              </h2>
+
+              <div>
+                <label for="nome-sim" class="block text-sm font-medium text-green-700 mb-1">
+                  Seu Nome
+                </label>
+
+                <input
+                  type="text"
+                  id="nome-sim"
+                  required
+                  placeholder="Digite seu nome"
+                  class="w-full px-4 py-2.5 rounded-xl border-2 border-green-200"
+                />
+              </div>
+
+              <div>
+                <label for="adultos" class="block text-sm font-medium text-green-700 mb-1">
+                  Número de Adultos
+                </label>
+
+                <input
+                  type="number"
+                  id="adultos"
+                  min="0"
+                  max="10"
+                  value="1"
+                  required
+                  class="w-full px-4 py-2.5 rounded-xl border-2 border-green-200"
+                />
+              </div>
+
+              <div>
+                <label for="criancas" class="block text-sm font-medium text-green-700 mb-1">
+                  Crianças (3 a 12 anos)
+                </label>
+
+                <input
+                  type="number"
+                  id="criancas"
+                  min="0"
+                  max="10"
+                  value="0"
+                  required
+                  class="w-full px-4 py-2.5 rounded-xl border-2 border-green-200"
+                />
+              </div>
+
+              <div>
+                <label for="mensagem-sim" class="block text-sm font-medium text-green-700 mb-1">
+                  Mensagem (opcional)
+                </label>
+
+                <textarea
+                  id="mensagem-sim"
+                  rows="2"
+                  placeholder="Deixe um recadinho..."
+                  class="w-full px-4 py-2.5 rounded-xl border-2 border-green-200 resize-none"
+                ></textarea>
+              </div>
+
+              <div class="flex gap-2">
+                <button
+                  type="submit"
+                  id="submit-btn-sim"
+                  class="flex-1 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-bold rounded-xl"
+                >
+                  🎉 Confirmar Presença
+                </button>
+
+                <button
+                  type="button"
+                  id="back-btn-sim"
+                  class="flex-1 py-3 bg-gray-300 text-gray-700 font-bold rounded-xl"
+                >
+                  ← Voltar
+                </button>
+              </div>
+            </form>
+
+            <!-- FORM NÃO -->
+            <form
+              id="rsvp-form-nao"
+              class="hidden bg-gradient-to-br from-red-50 to-rose-50 rounded-2xl p-5 border-2 border-red-200 space-y-4"
+            >
+              <h2 class="text-center text-red-600 font-bold text-lg mb-4">
+                😢 Que pena! Nos avise
+              </h2>
+
+              <div>
+                <label for="nome-nao" class="block text-sm font-medium text-red-700 mb-1">
+                  Seu Nome
+                </label>
+
+                <input
+                  type="text"
+                  id="nome-nao"
+                  required
+                  placeholder="Digite seu nome"
+                  class="w-full px-4 py-2.5 rounded-xl border-2 border-red-200"
+                />
+              </div>
+
+              <div>
+                <label for="mensagem-nao" class="block text-sm font-medium text-red-700 mb-1">
+                  Mensagem
+                </label>
+
+                <textarea
+                  id="mensagem-nao"
+                  rows="3"
+                  required
+                  placeholder="Que pena que você não vem..."
+                  class="w-full px-4 py-2.5 rounded-xl border-2 border-red-200 resize-none"
+                ></textarea>
+              </div>
+
+              <div class="flex gap-2">
+                <button
+                  type="submit"
+                  id="submit-btn-nao"
+                  class="flex-1 py-3 bg-gradient-to-r from-red-600 to-rose-600 text-white font-bold rounded-xl"
+                >
+                  Enviar Resposta
+                </button>
+
+                <button
+                  type="button"
+                  id="back-btn-nao"
+                  class="flex-1 py-3 bg-gray-300 text-gray-700 font-bold rounded-xl"
+                >
+                  ← Voltar
+                </button>
+              </div>
+            </form>
+
+            <!-- SUCESSO -->
+            <div
+              id="success-msg"
+              class="hidden text-center py-4 bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl p-5 border-2 border-purple-200"
+            >
+              <div class="text-4xl mb-2">🥳</div>
+
+              <p id="success-text" class="text-purple-700 font-bold text-lg">
+                Presença confirmada!
+              </p>
+
+              <p id="success-subtitle" class="text-purple-500 text-sm mt-1">
+                A Wendy está te esperando! 💕
+              </p>
+
+              <button
+                id="new-rsvp"
+                type="button"
+                class="mt-4 text-purple-600 underline text-sm font-medium"
+              >
+                Confirmar outro convidado
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ADMIN -->
+      <div id="admin-content" class="hidden max-w-lg mx-auto px-4 py-8">
+        <!-- restante do admin -->
+      </div>
+
+    </div>
   </div>
 
   <script src="script.js"></script>
-
 </body>
 </html>
