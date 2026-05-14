@@ -2,14 +2,7 @@ const ADMIN_PASSWORD = atob('d2VuZHlhZA==');
 
 let allGuests = [];
 
-const defaultConfig = {
-  party_title: 'Aniversário da Wendy',
-  party_date: 'Sábado, 16 de Agosto',
-  party_time: '15h às 19h',
-  party_location: 'Rua Goiás 2680'
-};
-
-window.elementSdk?.init?.({
+window.elementSdk.init({
   defaultConfig,
 
   onConfigChange: async (config) => {
