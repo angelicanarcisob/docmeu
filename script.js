@@ -1,8 +1,7 @@
-const ADMIN_PASSWORD = atob('d2VuZHlhZA==');
+/* =========================
+   CONFIGURAÇÃO
+========================= */
 
-let allGuests = [];
-
-/* CONFIGURAÇÃO */
 const defaultConfig = {
   party_title: "Aniversário da Wendy",
   party_date: "Sábado, 16 de Agosto",
@@ -10,54 +9,56 @@ const defaultConfig = {
   party_location: "Rua Goiás 2680"
 };
 
-/* ELEMENT SDK */
-window.elementSdk.init({
-  defaultConfig,
+let allGuests = [];
 
-  onConfigChange: async (config) => {
+/* =========================
+   ELEMENTOS
+========================= */
 
-    document.getElementById('title').textContent =
-      config.party_title || defaultConfig.party_title;
+const conviteTab =
+  document.getElementById('convite-tab');
 
-    document.getElementById('date-text').textContent =
-      config.party_date || defaultConfig.party_date;
+const adminTab =
+  document.getElementById('admin-tab');
 
-    document.getElementById('time-text').textContent =
-      config.party_time || defaultConfig.party_time;
+const conviteContent =
+  document.getElementById('convite-content');
 
-    document.getElementById('location-text').textContent =
-      config.party_location || defaultConfig.party_location;
-  }
-});
+const adminContent =
+  document.getElementById('admin-content');
 
-/* DATA SDK */
-const dataHandler = {
-  onDataChanged(data) {
-    allGuests = data;
-  }
-};
-
-(async () => {
-
-  const result = await window.dataSdk.init(dataHandler);
-
-  if (!result.isOk) {
-    console.error(result.error);
-  }
-
-})();
-
-/* ELEMENTOS */
 const stepOne =
   document.getElementById('step-one');
 
 const formSim =
   document.getElementById('rsvp-form-sim');
 
+const formNao =
+  document.getElementById('rsvp-form-nao');
+
 const successMsg =
   document.getElementById('success-msg');
 
-/* BOTÃO SIM */
+/* =========================
+   CONFIGURA TÍTULOS
+========================= */
+
+document.getElementById('title').textContent =
+  defaultConfig.party_title;
+
+document.getElementById('date-text').textContent =
+  defaultConfig.party_date;
+
+document.getElementById('time-text').textContent =
+  defaultConfig.party_time;
+
+document.getElementById('location-text').textContent =
+  defaultConfig.party_location;
+
+/* =========================
+   BOTÃO SIM
+========================= */
+
 document
   .getElementById('btn-sim')
   .addEventListener('click', () => {
@@ -65,17 +66,29 @@ document
     stepOne.classList.add('hidden');
 
     formSim.classList.remove('hidden');
+
+    formNao.classList.add('hidden');
   });
 
-/* BOTÃO NÃO */
+/* =========================
+   BOTÃO NÃO
+========================= */
+
 document
   .getElementById('btn-nao')
   .addEventListener('click', () => {
 
-    alert('Que pena 😢');
+    stepOne.classList.add('hidden');
+
+    formNao.classList.remove('hidden');
+
+    formSim.classList.add('hidden');
   });
 
-/* BOTÃO VOLTAR */
+/* =========================
+   VOLTAR SIM
+========================= */
+
 document
   .getElementById('back-btn-sim')
   .addEventListener('click', () => {
@@ -87,65 +100,53 @@ document
     formSim.reset();
   });
 
-/* FORMULÁRIO */
-formSim.addEventListener('submit', async (e) => {
+/* =========================
+   ABAS
+========================= */
+
+conviteTab.addEventListener('click', () => {
+
+  conviteContent.classList.remove('hidden');
+
+  adminContent.classList.add('hidden');
+
+  conviteTab.classList.remove('tab-default');
+  conviteTab.classList.add('tab-active');
+
+  adminTab.classList.remove('tab-active');
+  adminTab.classList.add('tab-default');
+});
+
+adminTab.addEventListener('click', () => {
+
+  adminContent.classList.remove('hidden');
+
+  conviteContent.classList.add('hidden');
+
+  adminTab.classList.remove('tab-default');
+  adminTab.classList.add('tab-active');
+
+  conviteTab.classList.remove('tab-active');
+  conviteTab.classList.add('tab-default');
+});
+
+/* =========================
+   FORMULÁRIO SIM
+========================= */
+
+formSim.addEventListener('submit', (e) => {
 
   e.preventDefault();
 
-  const btn =
-    document.getElementById('submit-btn-sim');
+  formSim.classList.add('hidden');
 
-  btn.disabled = true;
-
-  btn.innerText = '⏳ Enviando...';
-
-  const result = await window.dataSdk.create({
-
-    nome:
-      document.getElementById('nome-sim').value,
-
-    celular:
-      document.getElementById('celular-sim').value,
-
-    adultos:
-      parseInt(
-        document.getElementById('adultos').value
-      ) || 0,
-
-    criancas:
-      parseInt(
-        document.getElementById('criancas').value
-      ) || 0,
-
-    nomes_criancas:
-      document.getElementById('nomes-criancas').value,
-
-    idade_criancas:
-      document.getElementById('idade-criancas').value,
-
-    mensagem:
-      document.getElementById('mensagem-sim').value,
-
-    confirmou_aviso: 'sim',
-
-    created_at: new Date().toISOString()
-  });
-
-  if (result.isOk) {
-
-    formSim.classList.add('hidden');
-
-    successMsg.classList.remove('hidden');
-
-  } else {
-
-    alert('Erro ao enviar!');
-  }
-
-  btn.disabled = false;
-
-  btn.innerText = '🎉 Confirmar Presença';
+  successMsg.classList.remove('hidden');
 });
 
-/* ÍCONES */
-lucide.createIcons();
+/* =========================
+   ÍCONES
+========================= */
+
+if (window.lucide) {
+  lucide.createIcons();
+}
