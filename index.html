@@ -135,7 +135,7 @@
 
           <!-- CONFIRMAÇÃO -->
           <div class="px-6 pb-8 pt-2">
-
+            
             <div id="step-one" class="step-card">
               <h2 class="step-title">
                 💌 Confirme sua Presença
@@ -260,48 +260,11 @@
                 ></textarea>
               </div>
 
-              <div class="flex gap-2">
+              <!-- FORM SIM -->
+<form id="rsvp-form-sim" class="hidden form-card-success">
+...
+</form>
 
-                <button type="submit" id="submit-btn-sim" class="btn-success">
-                  🎉 Confirmar Presença
-                </button>
-
-                <button type="button" id="back-btn-sim" class="btn-gray">
-                  ← Voltar
-                </button>
-
-              </div>
-
-            </form>
-
-            <!-- SUCESSO -->
-            <div id="success-msg" class="hidden success-card">
-
-              <div class="text-4xl mb-2">
-                🥳
-              </div>
-
-              <p id="success-text" class="success-title">
-                Presença confirmada!
-              </p>
-
-              <p id="success-subtitle" class="success-subtitle">
-                A Wendy está te esperando 💕
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <script src="script.js"></script>
 <!-- FORM NÃO -->
 <form id="rsvp-form-nao" class="hidden form-card-success">
 
@@ -355,5 +318,35 @@
   </div>
 
 </form>
+
+            <!-- SUCESSO -->
+            <div id="success-msg" class="hidden success-card">
+
+              <div class="text-4xl mb-2">
+                🥳
+              </div>
+
+              <p id="success-text" class="success-title">
+                Presença confirmada!
+              </p>
+
+              <p id="success-subtitle" class="success-subtitle">
+                A Wendy está te esperando 💕
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
 </body>
 </html>
