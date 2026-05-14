@@ -2,25 +2,35 @@ const ADMIN_PASSWORD = atob('d2VuZHlhZA==');
 
 let allGuests = [];
 
+/* CONFIGURAÇÃO */
+const defaultConfig = {
+  party_title: "Aniversário da Wendy",
+  party_date: "Sábado, 16 de Agosto",
+  party_time: "15h às 19h",
+  party_location: "Rua Goiás 2680"
+};
+
+/* ELEMENT SDK */
 window.elementSdk.init({
   defaultConfig,
 
   onConfigChange: async (config) => {
 
     document.getElementById('title').textContent =
-      config.party_title;
+      config.party_title || defaultConfig.party_title;
 
     document.getElementById('date-text').textContent =
-      config.party_date;
+      config.party_date || defaultConfig.party_date;
 
     document.getElementById('time-text').textContent =
-      config.party_time;
+      config.party_time || defaultConfig.party_time;
 
     document.getElementById('location-text').textContent =
-      config.party_location;
+      config.party_location || defaultConfig.party_location;
   }
 });
 
+/* DATA SDK */
 const dataHandler = {
   onDataChanged(data) {
     allGuests = data;
@@ -37,7 +47,9 @@ const dataHandler = {
 
 })();
 
-const stepOne = document.getElementById('step-one');
+/* ELEMENTOS */
+const stepOne =
+  document.getElementById('step-one');
 
 const formSim =
   document.getElementById('rsvp-form-sim');
@@ -45,6 +57,7 @@ const formSim =
 const successMsg =
   document.getElementById('success-msg');
 
+/* BOTÃO SIM */
 document
   .getElementById('btn-sim')
   .addEventListener('click', () => {
@@ -54,6 +67,15 @@ document
     formSim.classList.remove('hidden');
   });
 
+/* BOTÃO NÃO */
+document
+  .getElementById('btn-nao')
+  .addEventListener('click', () => {
+
+    alert('Que pena 😢');
+  });
+
+/* BOTÃO VOLTAR */
 document
   .getElementById('back-btn-sim')
   .addEventListener('click', () => {
@@ -65,6 +87,7 @@ document
     formSim.reset();
   });
 
+/* FORMULÁRIO */
 formSim.addEventListener('submit', async (e) => {
 
   e.preventDefault();
@@ -124,4 +147,5 @@ formSim.addEventListener('submit', async (e) => {
   btn.innerText = '🎉 Confirmar Presença';
 });
 
+/* ÍCONES */
 lucide.createIcons();
