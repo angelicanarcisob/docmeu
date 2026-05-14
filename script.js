@@ -150,3 +150,36 @@ formSim.addEventListener('submit', (e) => {
 if (window.lucide) {
   lucide.createIcons();
 }
+/* =========================
+   VOLTAR NÃO
+========================= */
+
+document
+  .getElementById('back-btn-nao')
+  .addEventListener('click', () => {
+
+    formNao.classList.add('hidden');
+
+    stepOne.classList.remove('hidden');
+
+    formNao.reset();
+  });
+
+/* =========================
+   FORM NÃO
+========================= */
+
+formNao.addEventListener('submit', (e) => {
+
+  e.preventDefault();
+
+  formNao.classList.add('hidden');
+
+  successMsg.classList.remove('hidden');
+
+  document.getElementById('success-text').textContent =
+    '😢 Que pena que você não vai.';
+
+  document.getElementById('success-subtitle').textContent =
+    'A Wendy vai sentir sua falta 💜';
+});
